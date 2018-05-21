@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.xupt.crm.pojo.BaseDict;
 import com.xupt.crm.pojo.Customer;
@@ -42,6 +43,33 @@ public class CustomerController {
 		model.addAttribute("CustIndustry",vo.getCustIndustry() );
 		model.addAttribute("CustLevel",vo.getCustLevel() );
 		return "customer";	
+	}
+	
+	
+	@RequestMapping(value = "customer/edit.action")
+	
+	public @ResponseBody 
+	Customer edit(Integer id){
+		
+		return cs.selectCustomerById(id);
+	}
+	
+	
+	@RequestMapping(value = "customer/update.action")
+	public @ResponseBody
+	String update(Customer customer){
+	
+		cs.updateCustomerById(customer);
+		return "OK";
+	}
+	
+	@RequestMapping("customer/delete.action")
+	public @ResponseBody
+	String delete(Integer id){
+		
+		cs.deleteCustomerById(id);
+		
+		return "OK";
 	}
 	
 

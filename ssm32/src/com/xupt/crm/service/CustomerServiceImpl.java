@@ -46,4 +46,24 @@ public class CustomerServiceImpl implements CustomerService{
 		
 		return page;
 	}
+
+	@Override
+	public Customer selectCustomerById(Integer id) {
+		
+		return cm.selectCustomerById(id);
+	}
+
+	@Override
+	public void updateCustomerById(Customer customer) {
+		
+		cm.updateCustomerById(customer);
+		
+	}
+
+	@Override
+	public void deleteCustomerById(Integer id) {
+		
+		cm.deleteCustomerById(id);
+		
+	}
 }
